@@ -1,5 +1,9 @@
+import sys
 from flask.cli import FlaskGroup
-from server import create_app, db
+from server import create_app
+from server.api.models import db
+from server.api.models.model import User
+
 
 app = create_app()
 # FlaskGroup is a special subclass whose grandparent is
