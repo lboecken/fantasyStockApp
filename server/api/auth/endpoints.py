@@ -1,10 +1,11 @@
+from urllib import response
 from flask import Blueprint, request
 from flask_restx import Resource, Api
 
 from server import db
-from server.api.models.model import User
+from server.api.auth.model import User
 
-auth_blueprint = Blueprint('auth', __name__)
+auth_blueprint = Blueprint('auth', __name__, url_prefix='/auth')
 api = Api(auth_blueprint)
 
 
@@ -12,11 +13,17 @@ api = Api(auth_blueprint)
 class Register(Resource):
     def put(self):
         put_data = request.get_json()
+        if not put_data:
+            response_object = {'message': 'invalid payload'}
+            return response_object, 400
         username = put_data['username']
         password = put_data['password']
-
-        user = User(username=username, password=password)
-        db.session.add(user)
+        user = User.query.filter_by(username=username).first()
+        if user:
+            response_object = {
+                'message': f'username {username} is already taken'}
+            return response_object, 400
+        db.session.add(User(username=username, password=password))
         db.session.commit()
 
         response_object = {'message': f'{username} was registered'}

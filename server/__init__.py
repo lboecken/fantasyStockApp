@@ -1,11 +1,10 @@
 import os
 
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
-from server.api.models import db
 
-from server.api.ping import ping_blueprint
-from server.api.auth.endpoints import auth_blueprint
+db = SQLAlchemy()
 
 
 def create_app():
@@ -16,6 +15,8 @@ def create_app():
 
     db.init_app(app)
 
+    from server.api.ping import ping_blueprint
+    from server.api.auth.endpoints import auth_blueprint
     app.register_blueprint(ping_blueprint)
     app.register_blueprint(auth_blueprint)
 
