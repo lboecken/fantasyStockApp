@@ -1,4 +1,3 @@
-from urllib import response
 from flask import Blueprint, request
 from flask_restx import Resource, Api
 

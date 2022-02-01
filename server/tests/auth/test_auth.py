@@ -43,10 +43,3 @@ def test_register_invalid_payload(test_app, test_db):
     # THEN
     assert response.status_code == 400
     assert 'invalid payload' in data['message']
-
-
-
-
-    # GIVEN
-    # WHEN
-    # THEN
