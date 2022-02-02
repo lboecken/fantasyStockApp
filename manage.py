@@ -2,6 +2,7 @@ import sys
 from flask.cli import FlaskGroup
 from server import create_app, db
 from server.api.auth.model import User
+from server.api.portfolio.model import StockHoldings, Transactions, CashBalance
 
 
 app = create_app()
