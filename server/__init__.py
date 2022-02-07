@@ -19,9 +19,11 @@ def create_app():
     jwt.init_app(app)
 
     from server.api.ping import ping_blueprint
-    from server.api.auth.endpoints import auth_blueprint
     app.register_blueprint(ping_blueprint)
+    from server.api.auth.endpoints import auth_blueprint
     app.register_blueprint(auth_blueprint)
+    from server.api.stocks.endpoints import stocks_blueprint
+    app.register_blueprint(stocks_blueprint)
 
     @app.shell_context_processor
     def ctx():

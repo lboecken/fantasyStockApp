@@ -5,6 +5,7 @@ class BaseConfig:
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = 'my_secret'
+    IEX_API_TOKEN = 'sk_acb5f125ad3a44e4b9ef1938598013d1'
 
 
 class TestingConfig(BaseConfig):
