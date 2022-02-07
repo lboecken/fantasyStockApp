@@ -1,4 +1,6 @@
 import pytest
+
+from flask_sqlalchemy import Model
 from server import create_app, db
 
 
@@ -16,3 +18,11 @@ def test_db():
     yield db
     db.session.remove()
     db.drop_all()
+
+
+@pytest.fixture(scope="function")
+def clear_db():
+    meta = db.metadata
+    for table in reversed(meta.sorted_tables):
+        db.session.query(table).delete()
+    db.session.commit()

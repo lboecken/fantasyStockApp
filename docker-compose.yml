@@ -11,6 +11,7 @@ services:
     ports:
       - 5004:5000
     environment:
+      - FLASK_APP=server/__init__.py
       - FLASK_ENV=development
       - APP_SETTINGS=server.config.DevelopmentConfig
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/api_dev

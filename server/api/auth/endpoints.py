@@ -1,5 +1,6 @@
 from flask import Blueprint, request
 from flask_restx import Resource, Api
+from flask_jwt_extended import create_access_token
 
 from server import db
 from server.api.auth.model import User
@@ -14,7 +15,7 @@ api = Api(auth_blueprint)
 class Register(Resource):
     def put(self):
         put_data = request.get_json()
-        if not put_data:
+        if 'username' not in put_data or 'password' not in put_data:
             response_object = {'message': 'invalid payload'}
             return response_object, 400
         username = put_data['username']
@@ -33,3 +34,24 @@ class Register(Resource):
         return response_object, 201
 
 
+@api.route('/login')
+class Login(Resource):
+    def put(self):
+        put_data = request.get_json()
+        if 'username' not in put_data or 'password' not in put_data:
+            response_object = {'message': 'invalid payload'}
+            return response_object, 400
+        username = put_data['username']
+        password = put_data['password']
+        user = User.query.filter_by(username=username).first()
+        if not user:
+            response_object = {'message': f'{username} is not registered'}
+            return response_object, 400
+        if password != user.password:
+            response_object = {'message': 'invalid credentials'}
+            return response_object, 400
+        access_token = create_access_token(identity=username)
+        response_object = {
+            'message': f'{username} is logged in',
+            'access_token': access_token}
+        return response_object, 201
