@@ -7,3 +7,5 @@ venv
 # logs
 blog.markdown
 
+#  env vars
+.env

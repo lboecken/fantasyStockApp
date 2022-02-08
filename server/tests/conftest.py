@@ -1,3 +1,5 @@
+import json
+
 import pytest
 
 from flask_sqlalchemy import Model
@@ -26,3 +28,19 @@ def clear_db():
     for table in reversed(meta.sorted_tables):
         db.session.query(table).delete()
     db.session.commit()
+
+
+@pytest.fixture(scope="module")
+def create_login_fake_user(test_app, test_db):
+    client = test_app.test_client()
+    client.put(
+        '/auth/register',
+        data=json.dumps({'username': 'john', 'password': 'password'}),
+        content_type='application/json')
+    login_response = client.put(
+        '/auth/login',
+        data=json.dumps({'username': 'john', 'password': 'password'}),
+        content_type='application/json')
+    login_response_data = json.loads(login_response.data.decode())
+    access_token = login_response_data['access_token']
+    yield access_token
