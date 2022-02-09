@@ -14,7 +14,8 @@ api = Api(portfolio_blueprint)
 class PortfolioHoldings(Resource):
     @jwt_required()
     def get(self):
-        pass
+        id = current_user.id
+        
 
 
 @api.route('/cash')

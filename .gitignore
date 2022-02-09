@@ -7,5 +7,6 @@ venv
 # logs
 blog.markdown
 
-#  env vars
 .env
+.DS_Store
+.vscode
