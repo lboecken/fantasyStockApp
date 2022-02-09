@@ -2,14 +2,13 @@ import json
 
 import pytest
 
-from server.api.auth.model import User
+from server.api.auth.models import User
 
-from server.api.portfolio.model import CashBalance
+from server.api.portfolio.models import CashBalance
 
 
 def test_register_user_response(test_app, test_db, clear_db):
     # GIVEN
-    test_db.session.query(User).delete()
     client = test_app.test_client()
     # WHEN
     response = client.put(
