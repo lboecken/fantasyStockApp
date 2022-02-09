@@ -3,7 +3,7 @@ from sqlalchemy import func
 from server import db
 
 
-class StockHoldings(db.Model):
+class Holdings(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
@@ -17,4 +17,3 @@ class CashBalance(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     balance = db.Column(db.Float, nullable=False)
-

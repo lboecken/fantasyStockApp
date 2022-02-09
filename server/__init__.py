@@ -24,6 +24,8 @@ def create_app():
     app.register_blueprint(auth_blueprint)
     from server.api.stocks.endpoints import stocks_blueprint
     app.register_blueprint(stocks_blueprint)
+    from server.api.portfolio.endpoints import portfolio_blueprint
+    app.register_blueprint(portfolio_blueprint)
 
     @app.shell_context_processor
     def ctx():

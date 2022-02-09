@@ -3,7 +3,7 @@ from flask.cli import FlaskGroup
 from server import create_app, db
 from server.api.models import User
 from server.api.models import Transactions
-from server.api.models import StockHoldings
+from server.api.models import Holdings
 from server.api.models import CashBalance
 
 
