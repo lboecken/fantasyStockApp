@@ -1,3 +1,5 @@
+
+
 import os
 
 from flask import Flask
@@ -17,6 +19,13 @@ def create_app():
 
     db.init_app(app)
     jwt.init_app(app)
+
+    from server.api.models import User
+
+    @jwt.user_lookup_loader
+    def user_lookup_callback(_jwt_header, jwt_data):
+        identity = jwt_data['sub']
+        return User.query.filter_by(id=identity).one_or_none()
 
     from server.api.ping import ping_blueprint
     app.register_blueprint(ping_blueprint)

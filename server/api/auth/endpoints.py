@@ -16,12 +16,6 @@ api = Api(auth_blueprint)
 class Register(Resource):
     def put(self):
         put_data = request.get_json()
-        # if True:
-        #     args = request.form
-        #     print(args, file=sys.stderr)
-        #     print(put_data, file=sys.stderr)
-        #     if put_data is None:
-        #         print('put data is empty', file=sys.stderr)
         if put_data is None or 'username' not in put_data or 'password' not in put_data:
             response_object = {'message': 'invalid payload'}
             return response_object, 400
@@ -57,7 +51,7 @@ class Login(Resource):
         if password != user.password:
             response_object = {'message': 'invalid credentials'}
             return response_object, 400
-        access_token = create_access_token(identity=user)
+        access_token = create_access_token(identity=user.id)
         response_object = {
             'message': f'{username} is logged in', 'access_token': access_token}
         return response_object, 201

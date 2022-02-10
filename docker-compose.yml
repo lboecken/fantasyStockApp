@@ -19,6 +19,8 @@ services:
       - IEX_API_TOKEN=${IEX_API_TOKEN}
     depends_on:
       - db
+    restart: unless-stopped
+
 
   db:
     build:
