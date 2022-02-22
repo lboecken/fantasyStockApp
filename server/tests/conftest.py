@@ -1,9 +1,12 @@
 import json
+from os import access
 
 import pytest
 
 from flask_sqlalchemy import Model
 from server import create_app, db
+
+from server.api.models import User
 
 
 @pytest.fixture(scope="module")
@@ -31,7 +34,7 @@ def clear_db():
 
 
 @pytest.fixture(scope="module")
-def access_token(test_app, test_db):
+def fake_user(test_app, test_db):
     client = test_app.test_client()
     client.put(
         '/auth/register',
@@ -42,4 +45,8 @@ def access_token(test_app, test_db):
         data=json.dumps({'username': 'john', 'password': 'password'}),
         content_type='application/json')
     login_response_data = json.loads(login_response.data.decode())
-    return login_response_data['access_token']
+    user = User.query.filter_by(username='john').one_or_none()
+    fake_user = {'username': user.username,
+                 "user_id": user.id,
+                 'access_token': login_response_data['access_token']}
+    return fake_user

@@ -111,7 +111,8 @@ def test_login_invalid_credentials(test_app, test_db, clear_db):
     # WHEN
     response = client.put(
         '/auth/login',
-        data=json.dumps({'username': 'john', 'password': 'wrong_password'}),
+        data=json.dumps(
+            {'username': 'john', 'password': 'wrong_password'}),
         content_type='application/json')
     data = json.loads(response.data.decode())
     # THEN

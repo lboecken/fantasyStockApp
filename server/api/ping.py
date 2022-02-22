@@ -8,7 +8,7 @@ api = Api(ping_blueprint)
 
 class Ping(Resource):
     def get(self):
-        return {"status": "success", "message": "pong"}
+        return {"status": "success", "message": "pong"} 
 
     @jwt_required()
     def post(self):

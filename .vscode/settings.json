@@ -1,4 +1,7 @@
 {
   "editor.defaultFormatter": "ms-python.python",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "python.formatting.autopep8Args": [
+    "--max-line-length=70"
+  ]
 }

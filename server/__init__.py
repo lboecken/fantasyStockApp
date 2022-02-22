@@ -1,5 +1,3 @@
-
-
 import os
 
 from flask import Flask
@@ -35,6 +33,8 @@ def create_app():
     app.register_blueprint(stocks_blueprint)
     from server.api.portfolio.endpoints import portfolio_blueprint
     app.register_blueprint(portfolio_blueprint)
+    from server.api.transactions.endpoints import transaction_blueprint
+    app.register_blueprint(transaction_blueprint)
 
     @app.shell_context_processor
     def ctx():
