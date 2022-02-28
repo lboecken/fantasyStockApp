@@ -1,0 +1,21 @@
+Home Page
+[] display portfolio
+[] display cash balance
+[] charts based on holdings & cash
+    [] pie chart for distribution
+    [] total asseet distribution
+
+Trade Page
+[] search bar
+[] card per stock
+    [] w/ key data
+        What will that include?
+
+
+Login Page 
+[] simple input form
+
+Register 
+[] simple input form
+
+need to install bootstrap
