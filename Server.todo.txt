@@ -3,24 +3,23 @@ Endpoints
     [X] register
     [X] login
 
-[] portfolio
+[X] portfolio
     [X] GET Cash Balance
-    [] GET Holdings
+    [X] GET Holdings
         Need to map all holdings into an array to pass. 
 
-[] transactions
-    [] BUY 
-        [] update holding / create new
+[X] transactions
+    [X] BUY 
+        [X] update holding / create new
         [X] verify transaction is valid
         [X]update cash balance
         [X]post to holdings  
         [X]post to transactions  
-    [] SELL
-        [] update holding / remove completely
-        [] verify transaction is valid
-        [] update cash balance
+    [X] SELL
+        [X] update holding / remove completely
+        [X] verify transaction is valid
+        [X] update cash balance
 
-[] Stocks
-    [] GET quote
-    need to determine if this holds all the information
-    I need or if another endpoint is needed. 
+[X] Stocks
+    [X] GET quote
+    [] Search Symbols

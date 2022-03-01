@@ -1,5 +1,6 @@
-from urllib import response
-from flask import Blueprint, request
+
+from dataclasses import asdict
+from flask import Blueprint
 from flask_restx import Api, Resource
 from flask_jwt_extended import jwt_required, current_user
 
@@ -21,7 +22,10 @@ class PortfolioHoldings(Resource):
             response_object = {'holdings': [],
                                'message': 'no holdings'}
             return response_object, 200
-        response_object = {'holdings': 'test'}
+        serializable_holdings = []
+        for holding in holdings:
+            serializable_holdings.append(asdict(holding))
+        response_object = {'holdings': serializable_holdings}
         return response_object, 200
 
 

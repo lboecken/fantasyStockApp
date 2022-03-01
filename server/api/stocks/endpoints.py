@@ -15,7 +15,7 @@ token = os.getenv('IEX_API_TOKEN')
 @api.route('/price/<symbol>')
 class Price(Resource):
     @jwt_required()
-    def get(self, symbol=None):
+    def get(self, symbol):
         response = requests.get(
             f'https://cloud.iexapis.com/stable/stock/{symbol}/quote/?token={token}')
         try:
