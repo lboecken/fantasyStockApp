@@ -4,9 +4,11 @@ __pycache__
 venv
 .pytest_cache
 
-# logs
-blog.markdown
+# plannign files
+Server.todo.txt
+Client.todo.txt
 
+# Other
 .env
 .DS_Store
 .vscode
