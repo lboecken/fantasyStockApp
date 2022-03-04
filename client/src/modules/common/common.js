@@ -1,7 +1,5 @@
-import React from "react"
+import React from "react";
 
 export default function Common() {
-    return (
-        <h1>COMMON</h1>
-    )
+  return <h1>COMMON</h1>;
 }
