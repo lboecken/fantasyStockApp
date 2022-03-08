@@ -18,4 +18,6 @@ Login Page
 Register 
 [] simple input form
 
-need to install bootstrap
+
+[] Dockerize Client
+[] Setup nginx

@@ -23,3 +23,5 @@ Endpoints
 [X] Stocks
     [X] GET quote
     [] Search Symbols
+
+[] Salt & crpyt passwords

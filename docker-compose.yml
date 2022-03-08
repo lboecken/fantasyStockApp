@@ -4,12 +4,12 @@ services:
   server:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.server
     entrypoint: ['/urs/src/app/entrypoint.sh']
     volumes:
       - .:/urs/src/app
     ports:
-      - 5004:5000
+      - 5000:5000
     environment:
       - FLASK_APP=server/__init__.py
       - FLASK_ENV=development
@@ -21,7 +21,6 @@ services:
       - db
     restart: unless-stopped
 
-
   db:
     build:
       context: ./server/db
@@ -31,3 +30,10 @@ services:
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    volumes:
+      - ./client:./client
