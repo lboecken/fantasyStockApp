@@ -24,16 +24,16 @@ services:
   db:
     build:
       context: ./server/db
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.db
     expose:
       - 5432
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
-  client:
-    build:
-      context: .
-      dockerfile: Dockerfile.client
-    volumes:
-      - ./client:./client
+  # client:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.client
+  #   volumes:
+  #     - ./client:/client
