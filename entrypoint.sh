@@ -9,4 +9,4 @@ done
 
 echo 'postgres has started'
 
-python manage.py run -h 0.0.0.0
+gunicorn -b :5000 --workers=1 manage:app

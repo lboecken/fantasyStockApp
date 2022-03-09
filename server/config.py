@@ -4,8 +4,8 @@ import os
 class BaseConfig:
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = 'my_secret'
-    IEX_API_TOKEN = 'sk_acb5f125ad3a44e4b9ef1938598013d1'
+    SECRET_KEY = os.getenv("SECRET_KEY")
+    IEX_API_TOKEN = os.getenv("IEX_API_TOKEN")
 
 
 class TestingConfig(BaseConfig):
@@ -14,6 +14,7 @@ class TestingConfig(BaseConfig):
 
 
 class DevelopmentConfig(BaseConfig):
+    ENV="development"
     SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
 
 

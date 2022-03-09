@@ -4,6 +4,10 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 db = SQLAlchemy()
 jwt = JWTManager()
@@ -13,6 +17,7 @@ def create_app():
     app = Flask(__name__)
 
     app_settings = os.getenv("APP_SETTINGS")
+    print(app_settings)
     app.config.from_object(app_settings)
 
     db.init_app(app)
