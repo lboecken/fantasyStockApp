@@ -1,6 +1,6 @@
 from sqlalchemy import func
 
-from server import db
+from api import db
 
 
 class Transactions(db.Model):

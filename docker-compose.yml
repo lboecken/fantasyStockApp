@@ -1,18 +1,18 @@
 version: '3.8'
 
 services:
-  server:
+  api:
     build:
       context: .
-      dockerfile: Dockerfile.server
+      dockerfile: Dockerfile.api
     entrypoint: ['/urs/src/app/entrypoint.sh']
     image: stock-app-flask-server
     volumes:
       - .:/urs/src/app
     environment:
-      - FLASK_APP=server/__init__.py
+      - FLASK_APP=api/__init__.py
       - FLASK_ENV=development
-      - APP_SETTINGS=server.config.DevelopmentConfig
+      - APP_SETTINGS=${APP_SETTINGS}
       - DATABASE_URL=${DATABASE_URL}
       - TESTING_DATABASE_URL=${TESTING_DATABASE_URL}
       - IEX_API_TOKEN=${IEX_API_TOKEN}
@@ -22,7 +22,7 @@ services:
 
   db:
     build:
-      context: ./server/db
+      context: ./api/db
       dockerfile: Dockerfile.db
     image: stock-app-postgres-db
     expose:
@@ -39,6 +39,6 @@ services:
     volumes:
       - ./client:/client
     depends_on:
-      - server
+      - api
     ports:
       - 3000:80

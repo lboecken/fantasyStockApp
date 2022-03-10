@@ -4,9 +4,9 @@ from os import access
 import pytest
 
 from flask_sqlalchemy import Model
-from server import create_app, db
+from api import create_app, db
 
-from server.api.models import User
+from api.api.models import User
 
 
 @pytest.fixture(scope="module")

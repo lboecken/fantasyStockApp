@@ -3,10 +3,10 @@ from flask_restx import Api, Resource
 from flask_jwt_extended import jwt_required, current_user
 import jwt
 
-from server import db
-from server.api.models import Transactions
-from server.api.models import CashBalance
-from server.api.models import Holdings
+from api import db
+from api.api.models import Transactions
+from api.api.models import CashBalance
+from api.api.models import Holdings
 
 transaction_blueprint = Blueprint('txn', __name__, url_prefix='/txn')
 api = Api(transaction_blueprint)

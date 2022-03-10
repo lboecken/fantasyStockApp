@@ -4,9 +4,9 @@ from flask import Blueprint
 from flask_restx import Api, Resource
 from flask_jwt_extended import jwt_required, current_user
 
-from server import db
-from server.api.models import Holdings
-from server.api.models import CashBalance
+from api import db
+from api.api.models import Holdings
+from api.api.models import CashBalance
 
 portfolio_blueprint = Blueprint(
     'portfolio', __name__, url_prefix='/portfolio')

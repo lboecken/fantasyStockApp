@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from sqlalchemy import func
 
-from server import db
+from api import db
 
 
 @dataclass
