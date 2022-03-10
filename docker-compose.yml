@@ -6,10 +6,9 @@ services:
       context: .
       dockerfile: Dockerfile.server
     entrypoint: ['/urs/src/app/entrypoint.sh']
+    image: stock-app-flask-server
     volumes:
       - .:/urs/src/app
-    ports:
-      - 5000:5000
     environment:
       - FLASK_APP=server/__init__.py
       - FLASK_ENV=development
@@ -25,15 +24,21 @@ services:
     build:
       context: ./server/db
       dockerfile: Dockerfile.db
+    image: stock-app-postgres-db
     expose:
       - 5432
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
-  # client:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile.client
-  #   volumes:
-  #     - ./client:/client
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    image: stock-app-react-client
+    volumes:
+      - ./client:/client
+    depends_on:
+      - server
+    ports:
+      - 3000:80
