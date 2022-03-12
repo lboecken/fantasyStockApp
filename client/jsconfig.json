@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src"
+    "baseUrl": ".",
+    "paths": {
+      "@Common/*": ["./src/modules/common/*"],
+      "@Home/*": ["./src/modules/home/*"]
+    }
   },
-  "include": ["src"],
+  "include": ["./src"],
   "exclude": ["build", "node_modules"]
 }
