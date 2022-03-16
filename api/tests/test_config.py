@@ -2,7 +2,7 @@ import os
 
 
 def test_testing_config(test_app):
-    test_app.config.from_object('server.config.TestingConfig')
+    test_app.config.from_object('api.config.TestingConfig')
     assert test_app.config["SQLALCHEMY_DATABASE_URI"] == os.getenv(
         "TESTING_DATABASE_URL"
     )
@@ -12,7 +12,7 @@ def test_testing_config(test_app):
 
 
 def test_production_config(test_app):
-    test_app.config.from_object('server.config.ProductionConfig')
+    test_app.config.from_object('api.config.ProductionConfig')
     assert test_app.config['SQLALCHEMY_DATABASE_URI'] == os.getenv(
         'DATABASE_URL')
     assert not test_app.config['TESTING']
@@ -20,7 +20,7 @@ def test_production_config(test_app):
 
 
 def test_development_config(test_app):
-    test_app.config.from_object('server.config.DevelopmentConfig')
+    test_app.config.from_object('api.config.DevelopmentConfig')
     assert test_app.config['SQLALCHEMY_DATABASE_URI'] == os.getenv(
         'DATABASE_URL')
     assert not test_app.config['TESTING']

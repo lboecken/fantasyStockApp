@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile.api
     entrypoint: ['/urs/src/app/entrypoint.sh']
-    image: stock-app-flask-server
+    image: stock-app-flask-api
     volumes:
       - .:/urs/src/app
     environment:
@@ -22,7 +22,7 @@ services:
 
   db:
     build:
-      context: ./api/db
+      context: .
       dockerfile: Dockerfile.db
     image: stock-app-postgres-db
     expose:

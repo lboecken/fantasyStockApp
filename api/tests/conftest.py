@@ -12,7 +12,7 @@ from api.api.models import User
 @pytest.fixture(scope="module")
 def test_app():
     app = create_app()
-    app.config.from_object("server.config.TestingConfig")
+    app.config.from_object("api.config.TestingConfig")
     with app.app_context():
         yield app
 

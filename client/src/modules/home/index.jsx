@@ -1,36 +1,62 @@
+import styled from 'styled-components';
+
+import Header from '@Common/header';
+
+import image from '../../img/stockchart.jpg';
+
 function Home() {
   return (
-    <>
+    <Wrapper>
       <Header />
-      <div id='BODY'>
-        <h1>Welcome</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-          quas et necessitatibus cum, molestiae pariatur aperiam officia vitae
-          consectetur quisquam recusandae maiores similique est ipsum, quam
-          nesciunt provident tempore officiis!
-        </p>
-        <img src='https://via.placeholder.com/150'></img>
-      </div>
-      <div id='footer'>
-        <a>About the developer </a>
-        <a>About the project behind the scenes </a>
-        <a>LinkedIn </a>
-        <a>Github </a>
-        <a>Personal Website </a>
-      </div>
-    </>
+      <Body id='BODY'>
+        <div>
+          <h1>Welcome testing</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+            quas et necessitatibus cum, molestiae pariatur aperiam officia vitae
+            consectetur quisquam recusandae maiores similique est ipsum, quam
+            nesciunt provident tempore officiis!
+          </p>
+        </div>
+        <div>
+          <img src={image} width={750} height={'auto'}></img>
+        </div>
+      </Body>
+      <Footer>
+        <ul>
+          About the project
+          <li>Source Code</li>
+          <li>ULM Diagram</li>
+        </ul>
+        <ul>
+          About the developer
+          <li>LinkedIn </li>
+          <li>Github </li>
+          <li>Personal Website </li>
+        </ul>
+      </Footer>
+    </Wrapper>
   );
 }
 
 export default Home;
 
-function Header() {
-  return (
-    <div id='HEADER'>
-      <h2> Stock Trader</h2>
-      <button>Login</button>
-      <button>Register</button>
-    </div>
-  );
-}
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Body = styled.main`
+  flex: 1 0 auto;
+  display: flex;
+  padding: 3rem;
+`;
+
+const Footer = styled.footer`
+  margin-top: auto;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-evenly;
+  background: lightslategray;
+  padding: 2rem;
+`;

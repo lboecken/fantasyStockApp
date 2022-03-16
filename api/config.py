@@ -5,7 +5,6 @@ class BaseConfig:
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.getenv("SECRET_KEY")
-    IEX_API_TOKEN = os.getenv("IEX_API_TOKEN")
 
 
 class TestingConfig(BaseConfig):

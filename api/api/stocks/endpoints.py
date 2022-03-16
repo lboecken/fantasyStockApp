@@ -6,6 +6,7 @@ from flask import Blueprint, request
 from flask_jwt_extended import jwt_required
 from flask_restx import Api, Resource
 
+
 stocks_blueprint = Blueprint('stocks', __name__, url_prefix='/stocks')
 api = Api(stocks_blueprint)
 
@@ -24,3 +25,4 @@ class Price(Resource):
         except JSONDecodeError:
             response_object = {'message': 'Unknown symbol'}
             return response_object, 400
+
