@@ -3,7 +3,9 @@
     "baseUrl": ".",
     "paths": {
       "@Common/*": ["./src/modules/common/*"],
-      "@Home/*": ["./src/modules/home/*"]
+      "@Home/*": ["./src/modules/home/*"],
+      "@Theming/*": ["./src/theming/*"],
+      "@Images/*": ["./src/img/*"]
     }
   },
   "include": ["./src"],

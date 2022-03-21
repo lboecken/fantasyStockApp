@@ -2,7 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 import LusitanaBold from './Lusitana-Bold.ttf';
 import LusitanaRegular from './Lusitana-Regular.ttf';
-
 import RalewayBold from './Raleway-VariableFont_wght.ttf';
 
 const FontStyle = createGlobalStyle`
@@ -21,6 +20,9 @@ const FontStyle = createGlobalStyle`
         src: url(${RalewayBold}) format('tff');
         font-weight: 900;
     }
+
+
+
     `;
 
 export default FontStyle;

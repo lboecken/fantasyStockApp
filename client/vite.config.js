@@ -9,6 +9,8 @@ export default defineConfig({
     alias: {
       '@Common': path.resolve(__dirname, '/src/modules/common'),
       '@Home': path.resolve(__dirname, '/src/modules/home'),
+      '@Theming': path.resolve(__dirname, '/src/theming'),
+      '@Images': path.resolve(__dirname, '/src/img'),
     },
   },
 });

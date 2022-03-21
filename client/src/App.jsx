@@ -1,11 +1,16 @@
 import { Outlet } from 'react-router-dom';
-import FontStyle from './fonts/fonts';
+
+import { ThemeProvider } from 'styled-components';
+import colors from './theming/colors';
+import FontStyle from './theming/fonts/fonts';
 
 function App() {
   return (
     <>
+      {/* <ThemeProvider theme={colors}> */}
       <FontStyle />
       <Outlet />
+      {/* </ThemeProvider> */}
     </>
   );
 }
