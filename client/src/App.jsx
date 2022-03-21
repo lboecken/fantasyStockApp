@@ -11,7 +11,7 @@ function App() {
       <FontStyle />
       <Outlet />
       {/* </ThemeProvider> */}
-      <h1>Test</h1>
+      <h1>Testing</h1>
     </>
   );
 }
