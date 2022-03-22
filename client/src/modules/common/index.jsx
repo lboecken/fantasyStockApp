@@ -1,3 +1,3 @@
 import Header from './header/components/Header';
-
-export { Header };
+import Button from './button/Button';
+export { Header, Button };

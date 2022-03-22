@@ -4,12 +4,16 @@ import { ThemeProvider } from 'styled-components';
 import { colors } from '@Theming';
 import { Header } from '@Common';
 import image from '@Images/stockchart.jpg';
+import { Button } from '@Common/';
 
 function Home() {
   return (
     <ThemeProvider theme={colors}>
       <Wrapper>
-        <Header />
+        <Header>
+          <Button primary>Login</Button>
+          <Button>Register</Button>
+        </Header>
         <Body id='BODY'>
           <div>
             <h1>Welcome testing</h1>
@@ -50,6 +54,7 @@ const Wrapper = styled.div`
 `;
 
 const Body = styled.main`
+  background: ${(props) => props.theme.bluegreen};
   flex: 1 0 auto;
   display: flex;
   padding: 3rem;
