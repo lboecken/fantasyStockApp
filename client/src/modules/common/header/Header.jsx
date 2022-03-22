@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Button } from '@Common';
 
 function Header({ children }) {
   return (
@@ -24,11 +23,11 @@ const Container = styled.header`
   flex: 9 0 auto;
   display: flex;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1rem;
 `;
 
 const Title = styled.h1`
   flex: 1 0 auto;
   font-family: 'Lusitana-Bold';
-  font-size: 5rem;
+  font-size: 4.5rem;
 `;

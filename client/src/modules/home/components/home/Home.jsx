@@ -3,8 +3,9 @@ import { ThemeProvider } from 'styled-components';
 
 import { colors } from '@Theming';
 import { Header } from '@Common';
+import { Button } from '@Common';
+import { Footer } from '@Common/';
 import image from '@Images/stockchart.jpg';
-import { Button } from '@Common/';
 
 function Home() {
   return (
@@ -28,19 +29,7 @@ function Home() {
             <img src={image} width={750} height={'auto'}></img>
           </div>
         </Body>
-        <Footer>
-          <ul>
-            About the project
-            <li>Source Code</li>
-            <li>ULM Diagram</li>
-          </ul>
-          <ul>
-            About the developer
-            <li>LinkedIn </li>
-            <li>Github </li>
-            <li>Personal Website </li>
-          </ul>
-        </Footer>
+        <Footer />
       </Wrapper>
     </ThemeProvider>
   );
@@ -60,11 +49,3 @@ const Body = styled.main`
   padding: 3rem;
 `;
 
-const Footer = styled.footer`
-  margin-top: auto;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: space-evenly;
-  background: lightslategray;
-  padding: 2rem;
-`;
