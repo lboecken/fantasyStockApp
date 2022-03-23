@@ -2,10 +2,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@Common/*": ["./src/modules/common/*"],
-      "@Home/*": ["./src/modules/home/*"],
-      "@Theming/*": ["./src/theming/*"],
-      "@Images/*": ["./src/img/*"]
+      "@Common": ["./src/modules/common/index.js"],
+      "@Home": ["./src/modules/home/index.js"],
+      "@Theming": ["./src/theming/index.js"],
+      "@Images": ["./src/img/index.js"]
     }
   },
   "include": ["./src"],

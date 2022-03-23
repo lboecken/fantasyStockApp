@@ -2,17 +2,33 @@ import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 
 import { colors } from '@Theming';
+
 import { Header } from '@Common';
 import { Button } from '@Common';
-import { Footer } from '@Common/';
-import image from '@Images/stockchart.jpg';
+import { Footer } from '@Common';
+import { Modal, useModal } from '@Common';
 
+import { LoginForm } from '@Home';
+
+import { StockChart } from '@Images';
 function Home() {
+  const { isModalOpen, toggleModal, modalChildren, setModalChildren } =
+    useModal();
   return (
     <ThemeProvider theme={colors}>
+      {isModalOpen ? (
+        <Modal toggleModal={toggleModal} children={modalChildren}></Modal>
+      ) : null}
       <Wrapper>
         <Header>
-          <Button primary>Login</Button>
+          <Button
+            primary
+            onClick={() => {
+              setModalChildren(LoginForm);
+              toggleModal();
+            }}>
+            Login
+          </Button>
           <Button>Register</Button>
         </Header>
         <Body id='BODY'>
@@ -26,7 +42,7 @@ function Home() {
             </p>
           </div>
           <div>
-            <img src={image} width={750} height={'auto'}></img>
+            <img src={StockChart} width={750} height={'auto'}></img>
           </div>
         </Body>
         <Footer />
@@ -48,4 +64,3 @@ const Body = styled.main`
   display: flex;
   padding: 3rem;
 `;
-

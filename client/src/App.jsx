@@ -1,5 +1,7 @@
+
 import { Outlet } from 'react-router-dom';
-import FontStyle from './theming/fonts/fonts';
+
+import { FontStyle } from '@Theming';
 
 function App() {
   return (
@@ -11,3 +13,4 @@ function App() {
 }
 
 export default App;
+
