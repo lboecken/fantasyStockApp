@@ -8,9 +8,13 @@ export default defineConfig({
   resolve: {
     alias: {
       '@Common': path.resolve(__dirname, '/src/modules/common'),
-      '@Home': path.resolve(__dirname, '/src/modules/home'),
-      '@Theming': path.resolve(__dirname, '/src/theming'),
-      '@Images': path.resolve(__dirname, '/src/img'),
+      '@Public': path.resolve(__dirname, '/src/modules/public'),
+      '@Private': path.resolve(__dirname, '/src/modules/private'),
+      '@Home': path.resolve(__dirname, '/src/modules/public/home'),
+      '@GlobalStyles': path.resolve(__dirname, '/src/modules/globalStyles'),
+      '@Images': path.resolve(__dirname, '/src/modules/img'),
+      '@Dashboard': path.resolve(__dirname, '/src/modules/dashboard'),
+      '@Hooks': path.resolve(__dirname, '/src/modules/hooks'),
     },
   },
 });

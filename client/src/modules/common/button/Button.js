@@ -6,22 +6,22 @@ const Button = styled.button`
   font-size: 1.5rem;
   width: 100px;
   height: 50px;
-
   border-radius: 5px;
   border: 2px solid
-    ${(props) => (props.primary ? props.theme.green : props.theme.white)};
-  color: ${(props) => (props.primary ? props.theme.green : props.theme.white)};
+    ${(props) => (props.primary ? props.theme.bluegreen : props.theme.white)};
+  color: ${(props) =>
+    props.primary ? props.theme.bluegreen : props.theme.white};
   background-color: ${(props) =>
-    props.primary ? props.theme.white : props.theme.green};
+    props.primary ? props.theme.white : props.theme.bluegreen};
 
   :hover {
     cursor: pointer;
     border: 2px solid
-      ${(props) => (!props.primary ? props.theme.green : props.theme.white)};
+      ${(props) => (!props.primary ? props.theme.bluegreen : props.theme.white)};
     color: ${(props) =>
-      !props.primary ? props.theme.green : props.theme.white};
+      !props.primary ? props.theme.bluegreen : props.theme.white};
     background-color: ${(props) =>
-      !props.primary ? props.theme.white : props.theme.green};
+      !props.primary ? props.theme.white : props.theme.bluegreen};
   }
 `;
 

@@ -1,12 +1,11 @@
 import json
-from os import access
 
 import pytest
 
 from flask_sqlalchemy import Model
 from api import create_app, db
 
-from api.api.models import User
+from api.endpoints.models import User
 
 
 @pytest.fixture(scope="module")
@@ -49,4 +48,4 @@ def fake_user(test_app, test_db):
     fake_user = {'username': user.username,
                  "user_id": user.id,
                  'access_token': login_response_data['access_token']}
-    return fake_user
+    yield fake_user

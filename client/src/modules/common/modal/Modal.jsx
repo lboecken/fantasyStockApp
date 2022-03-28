@@ -2,14 +2,23 @@ import { useState } from 'react';
 
 import styled from 'styled-components';
 
+import { ExitIcon } from '@Common/icons';
+
 const InnerModal = styled.div`
-  background: ${(props) => props.theme.white};
-  border: 4px solid ${(props) => props.theme.green};
-  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-image: linear-gradient(
+    to bottom right,
+    ${(props) => props.theme.lightblue},
+    white
+  );
+  border: 4px solid ${(props) => props.theme.bluegreen};
+  border-radius: 25px;
   width: 600px;
   max-width: 100%;
-  height: 400px;
-  max-height: 100%;
+  height: auto;
+  max-height: 600px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -25,13 +34,17 @@ const OuterModal = styled.div`
   height: 100%;
   background: ${(props) => props.theme.grey_opaque};
   z-index: 1000;
+  cursor: pointer;
 `;
 
-function Modal({ children, toggleModal }) {
+function Modal({ content, toggleModal }) {
   return (
     <>
       <OuterModal onClick={toggleModal}></OuterModal>
-      <InnerModal>{children}</InnerModal>
+      <InnerModal>
+        <ExitIcon onClick={toggleModal} />
+        {content}
+      </InnerModal>
     </>
   );
 }
@@ -39,7 +52,7 @@ function Modal({ children, toggleModal }) {
 export default Modal;
 
 export function useModal() {
-  const [modalChildren, setModalChildren] = useState();
+  const [modalContent, setModalContent] = useState();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   function toggleModal() {
@@ -48,7 +61,7 @@ export function useModal() {
   return {
     isModalOpen: isModalOpen,
     toggleModal: toggleModal,
-    modalChildren: modalChildren,
-    setModalChildren: setModalChildren,
+    modalContent: modalContent,
+    setModalContent: setModalContent,
   };
 }

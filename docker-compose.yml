@@ -19,6 +19,8 @@ services:
     depends_on:
       - db
     restart: unless-stopped
+    ports:
+      - 5000:5000
 
   db:
     build:

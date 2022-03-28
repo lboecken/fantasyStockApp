@@ -1,16 +1,22 @@
-
 import { Outlet } from 'react-router-dom';
-
-import { FontStyle } from '@Theming';
+import { useState } from 'react';
+import { FontStyle } from '@GlobalStyles';
 
 function App() {
+  const { isLoggedIn, setIsLoggedIn } = useLoginManager();
   return (
     <>
       <FontStyle />
-      <Outlet />
+      <Outlet
+        context={{ isLoggedIn: isLoggedIn, setIsLoggedIn: setIsLoggedIn }}
+      />
     </>
   );
 }
 
 export default App;
 
+const useLoginManager = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  return { isLoggedIn: isLoggedIn, setIsLoggedIn: setIsLoggedIn };
+};

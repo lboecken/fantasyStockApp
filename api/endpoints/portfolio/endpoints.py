@@ -5,8 +5,8 @@ from flask_restx import Api, Resource
 from flask_jwt_extended import jwt_required, current_user
 
 from api import db
-from api.api.models import Holdings
-from api.api.models import CashBalance
+from api.endpoints.models import Holdings
+from api.endpoints.models import CashBalance
 
 portfolio_blueprint = Blueprint(
     'portfolio', __name__, url_prefix='/portfolio')

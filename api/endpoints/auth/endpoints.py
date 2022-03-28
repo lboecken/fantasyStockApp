@@ -3,8 +3,8 @@ from flask_restx import Resource, Api
 from flask_jwt_extended import create_access_token
 
 from api import db
-from api.api.models import User
-from api.api.models import CashBalance
+from api.endpoints.models import User
+from api.endpoints.models import CashBalance
 
 auth_blueprint = Blueprint('auth', __name__, url_prefix='/auth')
 api = Api(auth_blueprint)

@@ -1,7 +1,7 @@
 import json
 from os import access
 
-from api.api.portfolio.models import Holdings
+from api.endpoints.portfolio.models import Holdings
 
 
 buy_transaction_tsla = {'TYPE': 'BUY', 'SYMBOL': 'TSLA',
