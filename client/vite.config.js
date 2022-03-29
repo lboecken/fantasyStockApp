@@ -17,4 +17,6 @@ export default defineConfig({
       '@Hooks': path.resolve(__dirname, '/src/modules/hooks'),
     },
   },
+  server: { port: 5004 },
+  envDir: '..',
 });

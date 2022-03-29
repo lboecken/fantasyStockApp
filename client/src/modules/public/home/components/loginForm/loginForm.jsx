@@ -10,7 +10,7 @@ function LoginForm({ setIsLoggedIn }) {
       <Form
         onClick={(e) => {
           e.preventDefault();
-          setIsLoggedIn(true);
+          setIsLoggedIn(false);
           console.log('logged in');
         }}>
         <FlexDiv column>

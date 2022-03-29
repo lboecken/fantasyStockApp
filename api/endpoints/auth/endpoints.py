@@ -9,7 +9,6 @@ from api.endpoints.models import CashBalance
 auth_blueprint = Blueprint('auth', __name__, url_prefix='/auth')
 api = Api(auth_blueprint)
 
-
 @api.route('/register')
 class Register(Resource):
     def put(self):

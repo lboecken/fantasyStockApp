@@ -16,7 +16,7 @@ import { LoginForm, RegisterForm } from '@Home';
 function Home() {
   const { isModalOpen, toggleModal, setModalContent, modalContent } =
     useModal();
-  const { setIsLoggedIn } = useContextManager();
+  const { setIsLoggedIn, API_URL } = useContextManager();
   return (
     <>
       <ThemeProvider theme={colors}>
@@ -36,7 +36,7 @@ function Home() {
             </Button>
             <Button
               onClick={() => {
-                setModalContent(<RegisterForm />);
+                setModalContent(<RegisterForm API_URL={API_URL} />);
                 toggleModal();
               }}>
               Register

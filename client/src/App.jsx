@@ -4,12 +4,15 @@ import { FontStyle } from '@GlobalStyles';
 
 function App() {
   const { isLoggedIn, setIsLoggedIn } = useLoginManager();
+  const CONTEXT = {
+    isLoggedIn: isLoggedIn,
+    setIsLoggedIn: setIsLoggedIn,
+    API_URL: import.meta.env.VITE_API_URL,
+  };
   return (
     <>
       <FontStyle />
-      <Outlet
-        context={{ isLoggedIn: isLoggedIn, setIsLoggedIn: setIsLoggedIn }}
-      />
+      <Outlet context={CONTEXT} />
     </>
   );
 }

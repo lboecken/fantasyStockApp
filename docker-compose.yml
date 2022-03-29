@@ -29,6 +29,8 @@ services:
     image: stock-app-postgres-db
     expose:
       - 5432
+    ports:
+      - 8000:5432
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -38,8 +40,6 @@ services:
       context: .
       dockerfile: Dockerfile.client
     image: stock-app-react-client
-    volumes:
-      - ./client:/client
     depends_on:
       - api
     ports:

@@ -6,11 +6,10 @@ export function useRedirector() {
 }
 
 export function useContextManager() {
-  const { isLoggedIn, setIsLoggedIn } = useOutletContext();
+  const { isLoggedIn, setIsLoggedIn, API_URL } = useOutletContext();
   return {
     isLoggedIn: isLoggedIn,
     setIsLoggedIn: setIsLoggedIn,
+    API_URL: API_URL,
   };
 }
-
-
