@@ -3,10 +3,8 @@ import styled from 'styled-components';
 import Button from '@Common/button';
 import Form from './form';
 import Input from '../common/input';
-import { useContextManager } from '@Hooks';
 
-function LoginForm() {
-  const { setIsLoggedIn } = useContextManager();
+function LoginForm({ setIsLoggedIn }) {
   return (
     <>
       <Form

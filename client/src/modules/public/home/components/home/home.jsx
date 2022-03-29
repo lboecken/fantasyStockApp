@@ -14,25 +14,29 @@ import Modal, { useModal } from '@Common/modal';
 import { LoginForm, RegisterForm } from '@Home';
 
 function Home() {
-  const { isModalOpen, toggleModal, modalContent, setModalContent } =
+  const { isModalOpen, toggleModal, setModalContent, modalContent } =
     useModal();
   const { setIsLoggedIn } = useContextManager();
   return (
     <>
       <ThemeProvider theme={colors}>
+        {/* Modal gets appended to document.body by ReactDOM.createPortal */}
+        {isModalOpen ? (
+          <Modal toggleModal={toggleModal} content={modalContent}></Modal>
+        ) : null}
         <Wrapper>
           <Header>
             <Button
               primary
               onClick={() => {
-                setModalContent(LoginForm);
+                setModalContent(<LoginForm setIsLoggedIn={setIsLoggedIn} />);
                 toggleModal();
               }}>
               Login
             </Button>
             <Button
               onClick={() => {
-                setModalContent(RegisterForm);
+                setModalContent(<RegisterForm />);
                 toggleModal();
               }}>
               Register
@@ -54,9 +58,6 @@ function Home() {
           </Body>
           <Footer />
         </Wrapper>
-        {isModalOpen ? (
-          <Modal toggleModal={toggleModal} content={modalContent}></Modal>
-        ) : null}
       </ThemeProvider>
     </>
   );

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 
 import { ExitIcon } from '@Common/icons';
@@ -38,14 +38,15 @@ const OuterModal = styled.div`
 `;
 
 function Modal({ content, toggleModal }) {
-  return (
+  return createPortal(
     <>
       <OuterModal onClick={toggleModal}></OuterModal>
       <InnerModal>
         <ExitIcon onClick={toggleModal} />
         {content}
       </InnerModal>
-    </>
+    </>,
+    document.body
   );
 }
 

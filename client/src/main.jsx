@@ -37,7 +37,7 @@ ReactDOM.render(
 function PublicRoute({ restricted, element }) {
   const { isLoggedIn } = useContextManager();
   if (isLoggedIn && restricted) {
-    return <Navigate to='../' replace={true} />;
+    return <Navigate to='../trading/transaction=' replace={true} />;
   } else {
     return element ? element : <Outlet />;
   }
