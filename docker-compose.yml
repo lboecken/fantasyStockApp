@@ -22,6 +22,16 @@ services:
     ports:
       - 5000:5000
 
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    image: stock-app-react-client
+    depends_on:
+      - api
+    ports:
+      - 3000:80
+
   db:
     build:
       context: .
@@ -35,12 +45,11 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
-  client:
-    build:
-      context: .
-      dockerfile: Dockerfile.client
-    image: stock-app-react-client
-    depends_on:
-      - api
+  pgAdmin:
+    container_name: stock-app-postgres-pgadmin4
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
     ports:
-      - 3000:80
+      - '5050:80'
