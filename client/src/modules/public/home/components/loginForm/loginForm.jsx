@@ -11,7 +11,6 @@ function LoginForm({ setIsLoggedIn }) {
         onClick={(e) => {
           e.preventDefault();
           setIsLoggedIn(false);
-          console.log('logged in');
         }}>
         <FlexDiv column>
           <Input type='text' placeholder='Username' />

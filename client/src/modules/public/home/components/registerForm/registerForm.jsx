@@ -43,7 +43,12 @@ const FlexDiv = styled.div`
   }
 `;
 
-async function postAPI(request, url) {
-  const response = await axios.put(url, request);
+async function getAPI(url, request) {
+  const response = await axios(url, request);
+  console.log(response);
+}
+
+async function postAPI(url, request) {
+  const response = await axios.post(url, request);
   console.log(response);
 }
