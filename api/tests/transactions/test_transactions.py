@@ -36,7 +36,7 @@ def test_buy_response(test_app, test_db, fake_user):
     client = test_app.test_client()
     access_token = fake_user['access_token']
     # WHEN
-    response = client.put(
+    response = client.post(
         '/txn/buy',
         headers={'Authorization': f'Bearer {access_token}'},
         data=json.dumps(
@@ -53,7 +53,7 @@ def test_buy_no_access_token(test_app, test_db):
     # GIVEN
     client = test_app.test_client()
     # WHEN
-    response = client.put(
+    response = client.post(
         '/txn/buy',
         data=json.dumps(
             {'transaction':
@@ -72,7 +72,7 @@ def test_buy_updated_db_on_valid_request(test_app, test_db, fake_user):
     cash_balance_before_transaction = CashBalance.query.filter_by(
         id=fake_user['user_id']).one_or_none().balance
     # WHEN
-    client.put(
+    client.post(
         '/txn/buy',
         headers={'Authorization': f'Bearer {access_token}'},
         data=json.dumps(
@@ -110,7 +110,7 @@ def test_buy_not_enough_cash(test_app, test_db, fake_user):
         id=fake_user['user_id']).update(dict(balance=0))
     test_db.session.commit()
     # WHEN
-    response = client.put(
+    response = client.post(
         '/txn/buy',
         headers={'Authorization': f'Bearer {access_token}'},
         data=json.dumps(
@@ -131,7 +131,7 @@ def test_buy_multiple_purchases_same_stock(test_app, test_db, fake_user):
     CashBalance.query.filter_by(
         id=fake_user['user_id']).update(dict(balance=100000))
     test_db.session.commit()
-    client.put(
+    client.post(
         '/txn/buy',
         headers={'Authorization': f'Bearer {access_token}'},
         data=json.dumps(
@@ -140,7 +140,7 @@ def test_buy_multiple_purchases_same_stock(test_app, test_db, fake_user):
              }),
         content_type='application/json')
     # WHEN
-    response = client.put('/txn/buy',
+    response = client.post('/txn/buy',
                           headers={
                               'Authorization': f'Bearer {access_token}'},
                           data=json.dumps(
@@ -161,7 +161,7 @@ def test_sell_response(test_app, test_db, fake_user):
     # GIVEN
     client = test_app.test_client()
     access_token = fake_user['access_token']
-    client.put(
+    client.post(
         '/txn/buy',
         headers={'Authorization': f'Bearer {access_token}'},
         data=json.dumps(
@@ -169,7 +169,7 @@ def test_sell_response(test_app, test_db, fake_user):
              buy_transaction_twtr}),
         content_type='application/json')
     # WHEN
-    response = client.put(
+    response = client.post(
         '/txn/sell',
         headers={'Authorization': f'Bearer {access_token}'},
         data=json.dumps(
@@ -186,7 +186,7 @@ def test_sell_no_access_token(test_app, test_db):
     # GIVEN
     client = test_app.test_client()
     # WHEN
-    response = client.put(
+    response = client.post(
         '/txn/sell',
         data=json.dumps(
             {'transaction':
@@ -205,7 +205,7 @@ def test_sell_not_enough_stocks(test_app, test_db, fake_user):
     test_db.session.query(Holdings).delete()
     test_db.session.commit()
     # WHEN
-    response = client.put(
+    response = client.post(
         '/txn/sell',
         headers={
             'Authorization': f'Bearer {access_token}'},
@@ -226,7 +226,7 @@ def test_sell_updated_db_on_valid_request(test_app, test_db, fake_user):
     access_token = fake_user['access_token']
     test_db.session.query(Holdings).delete()
     test_db.session.commit()
-    client.put(
+    client.post(
         '/txn/buy',
         headers={'Authorization': f'Bearer {access_token}'},
         data=json.dumps(
@@ -241,7 +241,7 @@ def test_sell_updated_db_on_valid_request(test_app, test_db, fake_user):
     cash_balance_before_transaction = CashBalance.query.filter_by(
         id=fake_user['user_id']).one_or_none().balance
     # WHEN
-    client.put(
+    client.post(
         '/txn/sell',
         headers={'Authorization': f'Bearer {access_token}'},
         data=json.dumps(
@@ -273,7 +273,7 @@ def test_sell_partial_holding_sale(test_app, test_db, fake_user):
     # GIVEN
     client = test_app.test_client()
     access_token = fake_user['access_token']
-    client.put(
+    client.post(
         '/txn/buy',
         headers={'Authorization': f'Bearer {access_token}'},
         data=json.dumps(
@@ -281,7 +281,7 @@ def test_sell_partial_holding_sale(test_app, test_db, fake_user):
              buy_transaction_tsla
              }),
         content_type='application/json')
-    client.put(
+    client.post(
         '/txn/buy',
         headers={'Authorization': f'Bearer {access_token}'},
         data=json.dumps(
@@ -290,7 +290,7 @@ def test_sell_partial_holding_sale(test_app, test_db, fake_user):
              }),
         content_type='application/json')
     # WHEN
-    response = client.put(
+    response = client.post(
         '/txn/sell',
         headers={'Authorization': f'Bearer {access_token}'},
         data=json.dumps(

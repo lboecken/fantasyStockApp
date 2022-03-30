@@ -11,7 +11,7 @@ api = Api(auth_blueprint)
 
 @api.route('/register')
 class Register(Resource):
-    def put(self):
+    def post(self):
         put_data = request.get_json()
         if put_data is None or 'username' not in put_data or 'password' not in put_data:
             response_object = {'message': 'invalid payload'}
@@ -34,7 +34,7 @@ class Register(Resource):
 
 @ api.route('/login')
 class Login(Resource):
-    def put(self):
+    def post(self):
         put_data = request.get_json()
         if 'username' not in put_data or 'password' not in put_data:
             response_object = {'message': 'invalid payload'}

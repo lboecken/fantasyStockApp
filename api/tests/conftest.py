@@ -35,11 +35,11 @@ def clear_db():
 @pytest.fixture(scope="module")
 def fake_user(test_app, test_db):
     client = test_app.test_client()
-    client.put(
+    client.post(
         '/auth/register',
         data=json.dumps({'username': 'john', 'password': 'password'}),
         content_type='application/json')
-    login_response = client.put(
+    login_response = client.post(
         '/auth/login',
         data=json.dumps({'username': 'john', 'password': 'password'}),
         content_type='application/json')

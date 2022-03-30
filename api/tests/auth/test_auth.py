@@ -11,7 +11,7 @@ def test_register_user_response(test_app, test_db, clear_db):
     # GIVEN
     client = test_app.test_client()
     # WHEN
-    response = client.put(
+    response = client.post(
         '/auth/register',
         data=json.dumps({'username': 'john', 'password': 'password'}),
         content_type='application/json')
@@ -24,12 +24,12 @@ def test_register_user_response(test_app, test_db, clear_db):
 def test_register_username_taken(test_app, test_db, clear_db):
     # GIVEN
     client = test_app.test_client()
-    client.put(
+    client.post(
         '/auth/register',
         data=json.dumps({'username': 'john', 'password': 'password'}),
         content_type='application/json')
     # WHEN
-    response = client.put(
+    response = client.post(
         '/auth/register',
         data=json.dumps({'username': 'john', 'password': 'password'}),
         content_type='application/json')
@@ -43,7 +43,7 @@ def test_register_invalid_payload(test_app, test_db, clear_db):
     # GIVEN
     client = test_app.test_client()
     # WHEN
-    response = client.put('/auth/register', data=json.dumps({}),
+    response = client.post('/auth/register', data=json.dumps({}),
                           content_type='application/json')
     data = json.loads(response.data.decode())
     # THEN
@@ -55,7 +55,7 @@ def test_register_create_user_in_db(test_app, test_db, clear_db):
     # GIVEN
     client = test_app.test_client()
     # WHEN
-    response = client.put(
+    response = client.post(
         '/auth/register',
         data=json.dumps({'username': 'john', 'password': 'password'}),
         content_type='application/json')
@@ -69,12 +69,12 @@ def test_register_create_user_in_db(test_app, test_db, clear_db):
 def test_login_response(test_app, test_db, clear_db):
     # GIVEN
     client = test_app.test_client()
-    client.put(
+    client.post(
         '/auth/register',
         data=json.dumps({'username': 'john', 'password': 'password'}),
         content_type='application/json')
     # WHEN
-    response = client.put(
+    response = client.post(
         '/auth/login',
         data=json.dumps({'username': 'john', 'password': 'password'}),
         content_type='application/json')
@@ -89,7 +89,7 @@ def test_login_unregistered_user(test_app, test_db, clear_db):
     # GIVEN
     client = test_app.test_client()
     # WHEN
-    response = client.put(
+    response = client.post(
         '/auth/login',
         data=json.dumps({'username': 'john', 'password': 'password'}),
         content_type='application/json')
@@ -104,12 +104,12 @@ def test_login_unregistered_user(test_app, test_db, clear_db):
 def test_login_invalid_credentials(test_app, test_db, clear_db):
     # GIVEN
     client = test_app.test_client()
-    client.put(
+    client.post(
         '/auth/register',
         data=json.dumps({'username': 'john', 'password': 'password'}),
         content_type='application/json')
     # WHEN
-    response = client.put(
+    response = client.post(
         '/auth/login',
         data=json.dumps(
             {'username': 'john', 'password': 'wrong_password'}),
@@ -126,7 +126,7 @@ def test_login_invalid_payload(test_app, test_db):
     # GIVEN
     client = test_app.test_client()
     # WHEN
-    response = client.put(
+    response = client.post(
         '/auth/login',
         data=json.dumps({}),
         content_type='application/json')

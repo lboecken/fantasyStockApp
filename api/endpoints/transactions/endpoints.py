@@ -28,7 +28,7 @@ class Transaction():
 @api.route('/buy')
 class Buy(Resource, Transaction):
     @jwt_required()
-    def put(self):
+    def post(self):
         put_data = request.get_json()
         txn = put_data['transaction']
         if self._is_insufficient_cash(txn):
@@ -76,7 +76,7 @@ class Buy(Resource, Transaction):
 @api.route('/sell')
 class Sell(Resource, Transaction):
     @jwt_required()
-    def put(self):
+    def post(self):
         put_data = request.get_json()
         txn = put_data['transaction']
         if self._is_insufficients_stocks(txn):
