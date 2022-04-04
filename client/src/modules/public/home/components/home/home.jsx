@@ -36,7 +36,12 @@ function Home() {
             </Button>
             <Button
               onClick={() => {
-                setModalContent(<RegisterForm API_URL={API_URL} />);
+                setModalContent(
+                  <RegisterForm
+                    API_URL={API_URL}
+                    setIsLoggedIn={setIsLoggedIn}
+                  />
+                );
                 toggleModal();
               }}>
               Register

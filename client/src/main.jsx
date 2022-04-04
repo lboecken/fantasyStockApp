@@ -29,7 +29,6 @@ ReactDOM.render(
           <Route
             path='trading'
             element={<PrivateRoute element={<Trading />} />}>
-            <Route path='search' element={<Search />} />
             <Route path='portfolio' element={<Portfolio />} />
             <Route path='transactions' element={<Transactions />} />
           </Route>

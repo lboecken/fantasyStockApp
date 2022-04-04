@@ -1,20 +1,27 @@
 import styled from 'styled-components';
 
+import { makePostReq } from '@Common/utils';
 import Button from '@Common/button';
 import Form from './form';
-import Input from '../common/input';
+import Input from '@Common/input';
 
 function LoginForm({ setIsLoggedIn }) {
   return (
     <>
       <Form
-        onClick={(e) => {
+        onSubmit={async (e) => {
           e.preventDefault();
-          setIsLoggedIn(false);
+          const requestBody = {
+            username: e.target.username.value,
+            password: e.target.password.value,
+          };
+          const loginRes = await makePostReq('auth/login', requestBody);
+          if (loginRes.status !== 201) return;
+          setIsLoggedIn(true);
         }}>
         <FlexDiv column>
-          <Input type='text' placeholder='Username' />
-          <Input type='password' placeholder='Password' />
+          <Input type='text' placeholder='Username' name='username' />
+          <Input type='password' placeholder='Password' name='password' />
           <Button type='submit'>Login</Button>
         </FlexDiv>
         <FlexDiv>

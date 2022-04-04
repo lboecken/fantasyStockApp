@@ -3,7 +3,7 @@ import styled from 'styled-components';
 function Header({ children }) {
   return (
     <Container>
-      <Title> Stock Trader</Title>
+      <Title>Stock Trader</Title>
       <NavBar>{children}</NavBar>
     </Container>
   );
@@ -36,5 +36,6 @@ const Container = styled.header`
 const Title = styled.h1`
   flex: 1 0 auto;
   font-family: 'Lusitana-Bold';
-  font-size: 4.5rem;
+  font-size: 3rem;
+  align-self: center;
 `;

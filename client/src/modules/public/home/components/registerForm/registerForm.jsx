@@ -2,26 +2,35 @@ import styled from 'styled-components';
 
 import Button from '@Common/button';
 import Form from './form';
-import Input from '../common/input';
-import axios from 'axios';
+import Input from '@Common/input';
 
-function RegisterForm({ API_URL }) {
+import { makePostReq } from '@Common/utils';
+
+function RegisterForm({ setIsLoggedIn }) {
   return (
     <>
       <Form
-        onClick={(e) => {
+        onSubmit={async (e) => {
           e.preventDefault();
-          console.log(API_URL);
-          postAPI(
-            { username: 'test2', password: 'test2' },
-            API_URL + 'auth/register'
-          );
+          const requestBody = {
+            username: e.target.username.value,
+            password: e.target.password.value,
+          };
+          const registerRes = await makePostReq('auth/register', requestBody);
+          if (registerRes.status !== 201) return;
+          const loginRes = await makePostReq('auth/login', requestBody);
+          if (loginRes.status === 201) {
+            setIsLoggedIn(true);
+          }
         }}>
         <FlexDiv column>
-          <Input type='text' placeholder='Username' />
-          <Input type='email' placeholder='Email' />
-          <Input type='password' placeholder='Password' />
-          <Input type='password' placeholder='Confirm Password' />
+          <Input type='text' placeholder='Username' name='username' />
+          <Input type='password' placeholder='Password' name='password' />
+          <Input
+            type='password'
+            placeholder='Confirm Password'
+            name='confirmPassword'
+          />
         </FlexDiv>
         <FlexDiv>
           <Button type='submit'>Register</Button>
@@ -42,13 +51,3 @@ const FlexDiv = styled.div`
     margin: 1rem auto;
   }
 `;
-
-async function getAPI(url, request) {
-  const response = await axios(url, request);
-  console.log(response);
-}
-
-async function postAPI(url, request) {
-  const response = await axios.post(url, request);
-  console.log(response);
-}
