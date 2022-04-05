@@ -6,17 +6,15 @@ import {
   Route,
   Outlet,
   Navigate,
+  useOutletContext,
 } from 'react-router-dom';
 import './index.css';
 import App from './App';
 
-import { useContextManager } from '@Hooks';
 import Home from '@Public/home';
-import Trading from '@Private/trading';
 
-import Search from '@Private/trading/search';
+import Trading from '@Private/trading';
 import Portfolio from '@Private/trading/portfolio';
-import Transactions from '@Private/trading/transactions';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -30,7 +28,9 @@ ReactDOM.render(
             path='trading'
             element={<PrivateRoute element={<Trading />} />}>
             <Route path='portfolio' element={<Portfolio />} />
-            <Route path='transactions' element={<Transactions />} />
+            <Route path='stocks'>
+              <Route path=':symbol' element={<h1>HELLO WORLD</h1>} />
+            </Route>
           </Route>
         </Route>
       </Routes>
