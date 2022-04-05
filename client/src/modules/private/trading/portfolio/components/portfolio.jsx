@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import { useOutletContext } from 'react-router-dom';
 
 function Portfolio() {
+  const { cashBalance } = useOutletContext();
   return (
     <>
       <FlexDiv column>

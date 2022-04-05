@@ -1,7 +1,10 @@
-import { Outlet } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Outlet, useOutletContext } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 
 import { useRedirector } from '@Hooks';
+
+import { makeGetReq } from '@Common/utils';
 
 import { colors } from '@GlobalStyles';
 import Header from '@Common/header';

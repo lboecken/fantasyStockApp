@@ -1,15 +1,13 @@
-import { useOutletContext, useNavigate } from 'react-router-dom';
-
-export function useRedirector() {
-  const navigate = useNavigate();
-  return navigate;
-}
+import { useOutletContext } from 'react-router-dom';
 
 export function useContextManager() {
-  const { isLoggedIn, setIsLoggedIn, API_URL } = useOutletContext();
+  const { isLoggedIn, setIsLoggedIn, API_URL, bearerToken, setBearerToken } =
+    useOutletContext();
   return {
     isLoggedIn: isLoggedIn,
     setIsLoggedIn: setIsLoggedIn,
     API_URL: API_URL,
+    bearerToken: bearerToken,
+    setBearerToken: setBearerToken,
   };
 }

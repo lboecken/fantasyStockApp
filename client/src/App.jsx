@@ -1,13 +1,17 @@
 import { Outlet } from 'react-router-dom';
-import { useState } from 'react';
 import { FontStyle } from '@GlobalStyles';
 
+import { useLoginManager, useBearerToken } from '@Hooks';
 function App() {
   const { isLoggedIn, setIsLoggedIn } = useLoginManager();
+  const { bearerToken, setBearerToken } = useBearerToken();
+
   const CONTEXT = {
     isLoggedIn: isLoggedIn,
     setIsLoggedIn: setIsLoggedIn,
     API_URL: import.meta.env.VITE_API_URL,
+    bearerToken: bearerToken,
+    setBearerToken: setBearerToken,
   };
   return (
     <>
@@ -18,8 +22,3 @@ function App() {
 }
 
 export default App;
-
-const useLoginManager = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  return { isLoggedIn: isLoggedIn, setIsLoggedIn: setIsLoggedIn };
-};

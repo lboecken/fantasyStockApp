@@ -1,10 +1,10 @@
+import { useOutletContext } from 'react-router-dom';
+
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 
 import { colors } from '@GlobalStyles';
 import { StockChart } from '@Images';
-
-import { useContextManager } from '@Hooks';
 
 import Header from '@Common/header';
 import Button from '@Common/button';
@@ -16,7 +16,7 @@ import { LoginForm, RegisterForm } from '@Home';
 function Home() {
   const { isModalOpen, toggleModal, setModalContent, modalContent } =
     useModal();
-  const { setIsLoggedIn, API_URL } = useContextManager();
+  const { setIsLoggedIn, API_URL, setBearerToken } = useOutletContext();
   return (
     <>
       <ThemeProvider theme={colors}>

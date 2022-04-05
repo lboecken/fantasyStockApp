@@ -40,16 +40,16 @@ ReactDOM.render(
 );
 
 function PublicRoute({ restricted, element }) {
-  const { isLoggedIn } = useContextManager();
+  const { isLoggedIn } = useOutletContext();
   if (isLoggedIn && restricted) {
-    return <Navigate to='./trading/transactions' replace={true} />;
+    return <Navigate to='./trading/portfolio' replace={true} />;
   } else {
     return element ? element : <Outlet />;
   }
 }
 
 function PrivateRoute({ element }) {
-  const { isLoggedIn } = useContextManager();
+  const { isLoggedIn } = useOutletContext();
   if (isLoggedIn) {
     return element ? element : <Outlet />;
   } else {
