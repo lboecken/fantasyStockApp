@@ -5,7 +5,7 @@ import Button from '@Common/button';
 import Form from './form';
 import Input from '@Common/input';
 
-function LoginForm({ setIsLoggedIn }) {
+function LoginForm({ setIsLoggedIn, setBearerToken }) {
   return (
     <>
       <Form
@@ -17,6 +17,7 @@ function LoginForm({ setIsLoggedIn }) {
           };
           const loginRes = await makePostReq('auth/login', requestBody);
           if (loginRes.status !== 201) return;
+          setBearerToken(loginRes.data.access_token);
           setIsLoggedIn(true);
         }}>
         <FlexDiv column>

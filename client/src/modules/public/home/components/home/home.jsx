@@ -29,7 +29,12 @@ function Home() {
             <Button
               primary
               onClick={() => {
-                setModalContent(<LoginForm setIsLoggedIn={setIsLoggedIn} />);
+                setModalContent(
+                  <LoginForm
+                    setIsLoggedIn={setIsLoggedIn}
+                    setBearerToken={setBearerToken}
+                  />
+                );
                 toggleModal();
               }}>
               Login
