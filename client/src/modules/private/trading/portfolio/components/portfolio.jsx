@@ -10,8 +10,9 @@ function Portfolio() {
         <FlexDiv>
           <div>
             <h4>CASH BALANCE</h4>
-            <h5>$$$</h5>
+            <h5>{cashBalance}</h5>
           </div>
+          <button onClick={() => console.log(cashBalance)}>CLICKME</button>
           <div>
             <h4>STOCK HOLDINGS VALUE</h4>
             <h5>$$$</h5>

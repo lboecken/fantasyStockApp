@@ -13,6 +13,17 @@ import Footer from '@Common/footer';
 import Input from '@Common/input';
 
 function TradingWrapper() {
+  const [cashBalance, setCashBalance] = useState();
+  const { bearerToken } = useOutletContext();
+  console.log(bearerToken);
+
+  useEffect(async () => {
+    const { data } = await makeGetReq('portfolio/cash', {
+      headers: { Authorization: `Bearer ${bearerToken}` },
+    });
+    setCashBalance(data.cash_balance);
+  }, [setCashBalance]);
+
   const redirector = useRedirector();
   return (
     <>
@@ -23,12 +34,10 @@ function TradingWrapper() {
           </FlexDiv>
           <FlexDiv>
             <Button onClick={() => redirector('portfolio')}>Portfolio</Button>
-            <Button onClick={() => redirector('transactions')}>
-              Transactions
-            </Button>
+            <Button onClick={() => redirector('stocks/stocks')}>LogOut</Button>
           </FlexDiv>
         </Header>
-        <Outlet />
+        <Outlet context={{ cashBalance: cashBalance }} />
         <Footer />
       </ThemeProvider>
     </>
