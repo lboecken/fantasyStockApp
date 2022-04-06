@@ -19,8 +19,8 @@ function Portfolio() {
           </div>
         </FlexDiv>
         <FlexDiv>
-          <h3>Stock Holdings</h3>
           <h3>Transaction History</h3>
+          <h3>Stock Holdings</h3>
         </FlexDiv>
       </FlexDiv>
     </>
