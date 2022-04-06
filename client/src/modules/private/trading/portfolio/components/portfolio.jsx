@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useOutletContext } from 'react-router-dom';
 
+import Card from '@Common/card';
+
 function Portfolio() {
   const { cashBalance } = useOutletContext();
   return (
@@ -8,19 +10,22 @@ function Portfolio() {
       <FlexDiv column>
         <Title>Summary</Title>
         <FlexDiv>
-          <div>
+          <Card width='200px'>
             <h4>CASH BALANCE</h4>
             <h5>{cashBalance}</h5>
-          </div>
-          <button onClick={() => console.log(cashBalance)}>CLICKME</button>
-          <div>
+          </Card>
+          <Card>
             <h4>STOCK HOLDINGS VALUE</h4>
             <h5>$$$</h5>
-          </div>
+          </Card>
         </FlexDiv>
         <FlexDiv>
-          <h3>Transaction History</h3>
-          <h3>Stock Holdings</h3>
+          <Card>
+            <h3>Transaction History</h3>
+          </Card>
+          <Card>
+            <h3>Stock Holdings</h3>
+          </Card>
         </FlexDiv>
       </FlexDiv>
     </>

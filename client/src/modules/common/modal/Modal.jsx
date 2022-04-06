@@ -3,19 +3,11 @@ import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 
 import { ExitIcon } from '@Common/icons';
+import Card from '@Common/card';
 
-const InnerModal = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  background-image: linear-gradient(
-    to bottom right,
-    ${(props) => props.theme.lightblue},
-    white
-  );
-  border: 4px solid ${(props) => props.theme.bluegreen};
+const InnerModal = styled(Card)`
   border-radius: 25px;
-  width: 600px;
+  width: 500px;
   max-width: 100%;
   height: auto;
   max-height: 600px;
