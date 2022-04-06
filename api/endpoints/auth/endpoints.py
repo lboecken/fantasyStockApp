@@ -15,7 +15,7 @@ class Register(Resource):
         put_data = request.get_json()
         if put_data is None or 'username' not in put_data or 'password' not in put_data:
             response_object = {'message': 'invalid payload'}
-            return response_object, 409
+            return response_object, 400
         username = put_data['username']
         password = put_data['password']
         user = User.query.filter_by(username=username).first()

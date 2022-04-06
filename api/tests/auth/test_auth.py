@@ -35,7 +35,7 @@ def test_register_username_taken(test_app, test_db, clear_db):
         content_type='application/json')
     data = json.loads(response.data.decode())
     # THEN
-    assert response.status_code == 400
+    assert response.status_code == 409
     assert f"username john is already taken" in data['message']
 
 
