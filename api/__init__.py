@@ -26,7 +26,7 @@ def create_app():
     # For development purposes
     CORS(app) 
     
-    from api.endpoints.models import User
+    from api.models import User
 
     @jwt.user_lookup_loader
     def user_lookup_callback(_jwt_header, jwt_data):

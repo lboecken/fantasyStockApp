@@ -1,10 +1,10 @@
 import sys
 from flask.cli import FlaskGroup
 from api import create_app, db
-from api.endpoints.models import User
-from api.endpoints.models import Transactions
-from api.endpoints.models import Holdings
-from api.endpoints.models import CashBalance
+from api.models import User
+from api.models import Transactions
+from api.models import Holdings
+from api.models import CashBalance
 
 
 app = create_app()

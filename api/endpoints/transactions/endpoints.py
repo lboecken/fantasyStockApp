@@ -4,9 +4,9 @@ from flask_jwt_extended import jwt_required, current_user
 import jwt
 
 from api import db
-from api.endpoints.models import Transactions
-from api.endpoints.models import CashBalance
-from api.endpoints.models import Holdings
+from api.models import Transactions
+from api.models import CashBalance
+from api.models import Holdings
 
 transaction_blueprint = Blueprint('txn', __name__, url_prefix='/txn')
 api = Api(transaction_blueprint)

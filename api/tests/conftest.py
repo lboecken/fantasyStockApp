@@ -5,7 +5,7 @@ import pytest
 from flask_sqlalchemy import Model
 from api import create_app, db
 
-from api.endpoints.models import User
+from api.models import User
 
 
 @pytest.fixture(scope="module")

@@ -2,9 +2,9 @@ import json
 
 import pytest
 
-from api.endpoints.auth.models import User
+from api.models.auth import User
 
-from api.endpoints.portfolio.models import CashBalance
+from api.models.portfolio import CashBalance
 
 
 def test_register_user_response(test_app, test_db, clear_db):

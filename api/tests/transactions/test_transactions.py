@@ -1,8 +1,8 @@
 import json
 
-from api.endpoints.portfolio.models import CashBalance
-from api.endpoints.portfolio.models import Holdings
-from api.endpoints.transactions.models import Transactions
+from api.models.portfolio import CashBalance
+from api.models.portfolio import Holdings
+from api.models.transactions import Transactions
 
 
 buy_transaction_tsla = {'TYPE': 'BUY', 'SYMBOL': 'TSLA',
