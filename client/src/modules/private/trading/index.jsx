@@ -13,9 +13,25 @@ import Footer from '@Common/footer';
 import Input from '@Common/input';
 
 function TradingWrapper() {
+  const redirector = useRedirector();
   const [cashBalance, setCashBalance] = useState();
+  const [tickerSymbol, setTickerSymbol] = useState();
+  const [holdings, setHoldings] = useState();
   const { bearerToken } = useOutletContext();
-  console.log(bearerToken);
+
+  const CONTEXT = {
+    bearerToken: bearerToken,
+    tickerSymbol: tickerSymbol,
+    cashBalance: cashBalance,
+    holdings: holdings,
+  };
+
+  useEffect(async () => {
+    const { data } = await makeGetReq('portfolio/holdings', {
+      headers: { Authorization: `Bearer ${bearerToken}` },
+    });
+    setHoldings(data);
+  }, [setHoldings]);
 
   useEffect(async () => {
     const { data } = await makeGetReq('portfolio/cash', {
@@ -24,21 +40,33 @@ function TradingWrapper() {
     setCashBalance(data.cash_balance);
   }, [setCashBalance]);
 
-  const redirector = useRedirector();
   return (
     <>
       <ThemeProvider theme={colors}>
-        <Header>
-          <FlexDiv>
-            <SearchInput placeholder='Search' />
-          </FlexDiv>
-          <FlexDiv>
-            <Button onClick={() => redirector('portfolio')}>Portfolio</Button>
-            <Button onClick={() => redirector('stocks/stocks')}>LogOut</Button>
-          </FlexDiv>
-        </Header>
-        <Outlet context={{ cashBalance: cashBalance }} />
-        <Footer />
+        <Wrapper column>
+          <Header>
+            <FlexDiv>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  redirector(`../../trading/stocks/${tickerSymbol}`);
+                }}>
+                <SearchInput
+                  placeholder='Search'
+                  onChange={(e) => setTickerSymbol(e.target.value)}
+                />
+              </form>
+            </FlexDiv>
+            <FlexDiv>
+              <Button onClick={() => redirector('portfolio')}>Portfolio</Button>
+              <Button onClick={() => redirector('stocks/stocks')}>
+                LogOut
+              </Button>
+            </FlexDiv>
+          </Header>
+          <Outlet context={CONTEXT} />
+          <Footer />
+        </Wrapper>
       </ThemeProvider>
     </>
   );
@@ -50,13 +78,16 @@ const FlexDiv = styled.div`
   display: flex;
   flex-direction: ${(props) => (props.column ? 'column' : 'row')};
   justify-content: center;
+  align-items: center;
   padding: auto 1rem;
-  * {
-    margin: 1rem auto;
-  }
 `;
 
 const SearchInput = styled(Input)`
   align-self: center;
-  width: 200%;
+  width: 100%;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: ${(props) => (props.column ? 'column' : 'row')};
 `;
