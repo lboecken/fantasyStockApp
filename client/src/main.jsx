@@ -15,6 +15,7 @@ import Home from '@Public/home';
 
 import Trading from '@Private/trading';
 import Portfolio from '@Private/trading/portfolio';
+import Stock from '@Private/trading/stock';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -29,7 +30,7 @@ ReactDOM.render(
             element={<PrivateRoute element={<Trading />} />}>
             <Route path='portfolio' element={<Portfolio />} />
             <Route path='stocks'>
-              <Route path=':symbol' element={<h1>HELLO WORLD</h1>} />
+              <Route path=':symbol' element={<Stock />} />
             </Route>
           </Route>
         </Route>
