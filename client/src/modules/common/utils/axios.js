@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-async function makePostReq(url, config) {
+async function makePostReq(url, data, config) {
   const API_URL = import.meta.env.VITE_API_URL + url;
   const response = await axios
-    .post(API_URL, config)
+    .post(API_URL, data, config)
     .catch((error) => error.response);
   return response;
 }
