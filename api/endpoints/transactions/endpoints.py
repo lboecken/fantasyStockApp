@@ -29,8 +29,8 @@ class Transaction():
 class Buy(Resource, Transaction):
     @jwt_required()
     def post(self):
-        put_data = request.get_json()
-        txn = put_data['transaction']
+        post_data = request.get_json()
+        txn = post_data['transaction']
         if self._is_insufficient_cash(txn):
             response_object = {
                 'message':  'insufficient funds to execute transactions'}
