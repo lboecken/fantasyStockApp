@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import { useOutletContext } from 'react-router-dom';
 
 import Card from '@Common/card';
+import { TransactionTable } from '@Private/trading/portfolio';
 
 function Portfolio() {
-  const { cashBalance } = useOutletContext();
+  const { cashBalance, bearerToken } = useOutletContext();
+
   return (
     <>
       <FlexDiv column>
@@ -22,6 +24,7 @@ function Portfolio() {
         <FlexDiv>
           <Card>
             <h3>Transaction History</h3>
+            <TransactionTable />
           </Card>
           <Card>
             <h3>Stock Holdings</h3>
