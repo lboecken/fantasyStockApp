@@ -12,6 +12,7 @@ function Buy({ stockData, cashBalance, tickerSymbol, bearerToken }) {
             NUM_OF_SHARES: e.target.quantity.value,
             COST_BASIS_PER_SHARE: stockData.data.latestPrice,
             TOTAL: e.target.quantity.value * stockData.data.latestPrice,
+            TYPE: 'buy',
           };
 
           const data = await makePostReq(

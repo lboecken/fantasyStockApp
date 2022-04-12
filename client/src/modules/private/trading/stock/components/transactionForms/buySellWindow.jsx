@@ -28,7 +28,14 @@ function BuySellWindow({ stockData, cashBalance, bearerToken, tickerSymbol }) {
         <button
           type='button'
           onClick={() => {
-            setBuyOrSell(<Sell />);
+            setBuyOrSell(
+              <Sell
+                stockData={stockData}
+                cashBalance={cashBalance}
+                bearerToken={bearerToken}
+                tickerSymbol={tickerSymbol}
+              />
+            );
           }}>
           SELL
         </button>
