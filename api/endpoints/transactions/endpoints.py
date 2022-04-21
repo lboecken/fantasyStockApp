@@ -113,3 +113,10 @@ class Sell(Resource, Transaction):
             id=current_user.id).first().balance)
         CashBalance.query.filter_by(id=current_user.id).update(
             dict(balance=current_balance + txn["TOTAL"]))
+
+@api.route('/')
+class Retrieve(Resource):
+    @jwt_required()
+    def get():
+        
+        return 
