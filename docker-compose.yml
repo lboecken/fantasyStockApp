@@ -29,8 +29,6 @@ services:
     image: stock-app-react-client
     depends_on:
       - api
-    ports:
-      - 3000:80
 
   db:
     build:
