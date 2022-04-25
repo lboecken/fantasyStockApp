@@ -1,7 +1,9 @@
 from flask import request, Blueprint
 from flask_restx import Api, Resource
 from flask_jwt_extended import jwt_required, current_user
-import jwt
+
+from dataclasses import asdict
+
 
 from api import db
 from api.models import Transactions
@@ -114,9 +116,16 @@ class Sell(Resource, Transaction):
         CashBalance.query.filter_by(id=current_user.id).update(
             dict(balance=current_balance + txn["TOTAL"]))
 
-@api.route('/')
+@api.route('/get_all')
 class Retrieve(Resource):
     @jwt_required()
-    def get():
-        
-        return 
+    def get(self):
+        transactions = Transactions.query.filter_by(id=current_user.id).all()
+        if transactions == []:
+            response_object = {'transactions': [], 'message': 'no transactions'}
+            return response_object, 200
+        serializable_transactions = []
+        for transaction in transactions:
+            serializable_transactions.append(asdict(transaction))
+        response_object = {'transactions': serializable_transactions}
+        return response_object, 200

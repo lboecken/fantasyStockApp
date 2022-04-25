@@ -303,3 +303,41 @@ def test_sell_partial_holding_sale(test_app, test_db, fake_user):
         user_id=fake_user['user_id'], symbol='TSLA').first()
     # THEN
     assert holding.number_of_shares == 6
+
+
+def test_retrieve_no_access_token(test_app, test_db):
+    # GIVEN
+    client = test_app.test_client()
+    # WHEN
+    response = client.get('/txn/get_all')
+    data = json.loads(response.data.decode())
+    # THEN
+    assert response.status_code == 401
+    assert data['msg'] == 'Missing Authorization Header'
+
+def test_transaction_get(test_app, test_db, fake_user):
+    # GIVEN
+    client = test_app.test_client()
+    access_token = fake_user['access_token']
+    # WHEN
+    response = client.get('/txn/get_all',
+                          headers={'Authorization': f'Bearer {access_token}'})
+    data = json.loads(response.data.decode())
+    # THEN
+    assert data['transactions']
+
+
+def test_holdings_with_no_holdings(test_app, test_db, fake_user):
+    # GIVEN
+    client = test_app.test_client()
+    access_token = fake_user['access_token']
+    test_db.session.query(Transactions).delete()
+    test_db.session.commit()
+    # WHEN
+    response = client.get('/txn/get_all',
+                          headers={'Authorization': f'Bearer {access_token}'})
+    data = json.loads(response.data.decode())
+    # THEN
+    assert response.status_code == 200
+    assert data['message'] == 'no transactions'
+    assert data['transactions'] == []

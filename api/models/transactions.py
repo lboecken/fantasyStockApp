@@ -1,8 +1,9 @@
 from sqlalchemy import func
 
+from dataclasses import dataclass
 from api import db
 
-
+@dataclass
 class Transactions(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey(
