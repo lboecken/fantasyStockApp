@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useOutletContext } from 'react-router-dom';
 
 import Card from '@Common/card';
-import { TransactionTable } from '@Private/trading/portfolio';
+import { TransactionTable } from '@Trading/portfolio';
 
 function Portfolio() {
   const { cashBalance } = useOutletContext();

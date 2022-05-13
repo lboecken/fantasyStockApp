@@ -11,11 +11,11 @@ import {
 import './index.css';
 import App from './App';
 
-import Home from '@Public/home';
+import Home from '@Home';
 
-import Trading from '@Private/trading';
-import Portfolio from '@Private/trading/portfolio';
-import Stock from '@Private/trading/stock';
+import Trading from '@Trading';
+import Portfolio from '@Trading/portfolio';
+import Stock from '@Trading/stock';
 
 ReactDOM.render(
   <React.StrictMode>

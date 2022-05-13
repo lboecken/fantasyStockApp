@@ -3,9 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@Common/*": ["./src/modules/common/*"],
-      "@Public/*": ["src/modules/public/*"],
-      "@Private/*": ["src/modules/private/*"],
-      "@Home": ["src/modules/public/home"],
+      "@Trading/*": ["src/modules/trading/*"],
+      "@Home": ["src/modules/home"],
       "@GlobalStyles": ["src/modules/globalStyles/index.js"],
       "@Images": ["src/modules/img/index.js"],
       "@Dashboard/*": ["src/modules/private/*"],

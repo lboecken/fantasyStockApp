@@ -4,7 +4,7 @@ import { useOutletContext } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { makeGetReq } from '@Common/utils';
-import { BuySellWindow, Position } from '@Private/trading/stock';
+import { BuySellWindow, Position } from '@Trading/stock';
 
 function Stock() {
   const { bearerToken, tickerSymbol, holdings, cashBalance } =

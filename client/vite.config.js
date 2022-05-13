@@ -8,9 +8,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@Common': path.resolve(__dirname, '/src/modules/common'),
-      '@Public': path.resolve(__dirname, '/src/modules/public'),
-      '@Private': path.resolve(__dirname, '/src/modules/private'),
-      '@Home': path.resolve(__dirname, '/src/modules/public/home'),
+      '@Trading': path.resolve(__dirname, '/src/modules/trading'),
+      '@Home': path.resolve(__dirname, '/src/modules/home'),
       '@GlobalStyles': path.resolve(__dirname, '/src/modules/globalStyles'),
       '@Images': path.resolve(__dirname, '/src/modules/img'),
       '@Dashboard': path.resolve(__dirname, '/src/modules/dashboard'),
@@ -20,3 +19,4 @@ export default defineConfig({
   server: { port: 5004 },
   envDir: '..',
 });
+

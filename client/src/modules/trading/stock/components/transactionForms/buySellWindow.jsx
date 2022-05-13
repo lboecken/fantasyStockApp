@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import Card from '@Common/card';
 
-import { Buy, Sell } from '@Private/trading/stock';
+import { Buy, Sell } from '@Trading/stock';
 
 function BuySellWindow({ stockData, cashBalance, bearerToken, tickerSymbol }) {
   const [buyOrSell, setBuyOrSell] = useState();
