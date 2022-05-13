@@ -319,11 +319,22 @@ def test_transaction_get(test_app, test_db, fake_user):
     # GIVEN
     client = test_app.test_client()
     access_token = fake_user['access_token']
+    test_db.session.query(Transactions).delete()
+    test_db.session.commit()
+    client.post(
+        '/txn/buy',
+        headers={'Authorization': f'Bearer {access_token}'},
+        data=json.dumps(
+            {'transaction':
+            buy_transaction_tsla
+            }),
+        content_type='application/json')
     # WHEN
     response = client.get('/txn/get_all',
                           headers={'Authorization': f'Bearer {access_token}'})
     data = json.loads(response.data.decode())
     # THEN
+    assert response.status_code == 200
     assert data['transactions']
 
 

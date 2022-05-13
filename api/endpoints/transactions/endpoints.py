@@ -4,7 +4,6 @@ from flask_jwt_extended import jwt_required, current_user
 
 from dataclasses import asdict
 
-
 from api import db
 from api.models import Transactions
 from api.models import CashBalance
@@ -120,12 +119,24 @@ class Sell(Resource, Transaction):
 class Retrieve(Resource):
     @jwt_required()
     def get(self):
-        transactions = Transactions.query.filter_by(id=current_user.id).all()
+        transactions = Transactions.query.filter_by(user_id=current_user.id).all()
         if transactions == []:
             response_object = {'transactions': [], 'message': 'no transactions'}
             return response_object, 200
         serializable_transactions = []
         for transaction in transactions:
-            serializable_transactions.append(asdict(transaction))
+            new_transaction = {
+                'total': transaction.total_transaction_amount,
+                'cost_basis_per_share': transaction.cost_basis_per_share,
+                'number_of_shares': transaction.number_of_shares,
+                'symbol': transaction.symbol,
+                'type': transaction.type,
+                'id': transaction.id,
+                # 'created_at': transaction.created_date
+            }
+            print(dir(transaction))
+            print(type(transaction.created_date))
+            print(transaction.created_date)
+            serializable_transactions.append(new_transaction)
         response_object = {'transactions': serializable_transactions}
         return response_object, 200

@@ -17,7 +17,7 @@ api = Api(portfolio_blueprint)
 class PortfolioHoldings(Resource):
     @jwt_required()
     def get(self):
-        holdings = Holdings.query.filter_by(id=current_user.id).all()
+        holdings = Holdings.query.filter_by(user_id=current_user.id).all()
         if holdings == []:
             response_object = {'holdings': [],
                                'message': 'no holdings'}

@@ -6,7 +6,10 @@ function TransactionTable() {
   const { bearerToken } = useOutletContext();
   const [tableData, setTableData] = useState([]);
   useEffect(async () => {
-    const { data } = makeGetReq('txn/get');
+    const response = makeGetReq('txn/get_all', {
+      headers: { Authorization: `Bearer ${bearerToken}` },
+    });
+    console.log(response);
   }, [setTableData]);
   return (
     <>

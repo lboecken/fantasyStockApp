@@ -5,7 +5,7 @@ import Card from '@Common/card';
 import { TransactionTable } from '@Private/trading/portfolio';
 
 function Portfolio() {
-  const { cashBalance, bearerToken } = useOutletContext();
+  const { cashBalance } = useOutletContext();
 
   return (
     <>
