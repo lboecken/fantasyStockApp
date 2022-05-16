@@ -16,7 +16,15 @@ export default defineConfig({
       '@Hooks': path.resolve(__dirname, '/src/modules/hooks'),
     },
   },
-  server: { port: 5004 },
+  server: {
+    port: 5004,
+    proxy: {
+      '^/api/*': {
+        target: 'https://localhost:5000',
+        secure: true,
+        changeOrigin: true,
+      },
+    },
+  },
   envDir: '..',
 });
-
