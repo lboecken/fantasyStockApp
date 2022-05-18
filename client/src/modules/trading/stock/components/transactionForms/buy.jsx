@@ -16,7 +16,7 @@ function Buy({ stockData, cashBalance, tickerSymbol, bearerToken }) {
           };
 
           const data = await makePostReq(
-            'txn/buy',
+            '/api/txn/buy',
             { transaction: order },
             { headers: { Authorization: `Bearer ${bearerToken}` } }
           );

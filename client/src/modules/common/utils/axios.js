@@ -1,17 +1,18 @@
 import axios from 'axios';
 
 async function makePostReq(url, data, config) {
-  const API_URL = import.meta.env.VITE_API_URL + url;
+  console.log(url);
   const response = await axios
-    .post(API_URL, data, config)
+    .post(url, data, config)
     .catch((error) => error.response);
+
   return response;
 }
 
 async function makeGetReq(url, config) {
-  const API_URL = import.meta.env.VITE_API_URL + url;
+  console.log(url);
   const response = await axios
-    .get(API_URL, config)
+    .get(url, config)
     .catch((error) => error.response);
   return response;
 }

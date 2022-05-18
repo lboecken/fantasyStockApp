@@ -27,14 +27,14 @@ function TradingWrapper() {
   };
 
   useEffect(async () => {
-    const { data } = await makeGetReq('portfolio/holdings', {
+    const { data } = await makeGetReq('/api/portfolio/holdings', {
       headers: { Authorization: `Bearer ${bearerToken}` },
     });
     setHoldings(data);
   }, [setHoldings]);
 
   useEffect(async () => {
-    const { data } = await makeGetReq('portfolio/cash', {
+    const { data } = await makeGetReq('/api/portfolio/cash', {
       headers: { Authorization: `Bearer ${bearerToken}` },
     });
     setCashBalance(data.cash_balance);

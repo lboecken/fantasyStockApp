@@ -16,9 +16,13 @@ function RegisterForm({ setIsLoggedIn }) {
             username: e.target.username.value,
             password: e.target.password.value,
           };
-          const registerRes = await makePostReq('auth/register', requestBody);
-          if (registerRes.status !== 201) return;
-          const loginRes = await makePostReq('auth/login', requestBody);
+          const registerRes = await makePostReq(
+            '/api/auth/register',
+            requestBody,
+            {}
+          );
+          if (registerRes.status !== 201) console.log(registerRes);
+          const loginRes = await makePostReq('/api/auth/login', requestBody);
           if (loginRes.status === 201) {
             setIsLoggedIn(true);
           }

@@ -12,7 +12,7 @@ function Stock() {
   const [stockData, setStockData] = useState();
 
   useEffect(async () => {
-    const { data } = await makeGetReq('stocks/price/tsla', {
+    const { data } = await makeGetReq('/api/stocks/price/tsla', {
       headers: { Authorization: `Bearer ${bearerToken}` },
     });
     setStockData(data);

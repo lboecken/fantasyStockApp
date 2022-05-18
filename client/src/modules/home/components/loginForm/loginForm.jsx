@@ -15,7 +15,7 @@ function LoginForm({ setIsLoggedIn, setBearerToken }) {
             username: e.target.username.value,
             password: e.target.password.value,
           };
-          const loginRes = await makePostReq('/auth/login', requestBody);
+          const loginRes = await makePostReq('/api/auth/login', requestBody);
           if (loginRes.status !== 201) return;
           setBearerToken(loginRes.data.access_token);
           setIsLoggedIn(true);

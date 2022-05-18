@@ -16,7 +16,7 @@ function sellForm({ stockData, bearerToken, tickerSymbol }) {
           };
 
           const data = await makePostReq(
-            'txn/sell',
+            '/api/txn/sell',
             { transaction: order },
             { headers: { Authorization: `Bearer ${bearerToken}` } }
           );
